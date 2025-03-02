@@ -9,7 +9,11 @@ function SplashScreen() {
   }, []);
 
   const nav = useNavigate();
-  return <div className='w-full h-screens'></div>;
+  return (
+    <div className='w-full h-screen flex justify-center items-center'>
+      <div className='logo'>Vigneshwara Medicals</div>
+    </div>
+  );
 }
 
 export default SplashScreen;

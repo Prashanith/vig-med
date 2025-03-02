@@ -9,7 +9,7 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className='flex justify-center items-center'>
       <ActionCard
         id='billGeneration'
         title='Create Bill'
