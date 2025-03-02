@@ -14,7 +14,7 @@
 }
 
 body {
-  @apply flex justify-start items-start w-full h-screen;
+  @apply w-full h-screen p-0 m-0;
 }
 
 .inputField {
