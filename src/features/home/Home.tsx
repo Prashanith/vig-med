@@ -5,11 +5,11 @@ function Home() {
   const nav = useNavigate();
 
   function navigateToBillGeneration() {
-    nav("generate-bill");
+    nav("generate-bill",{replace:true});
   }
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='w-full h-screen flex justify-center items-center'>
       <ActionCard
         id='billGeneration'
         title='Create Bill'
