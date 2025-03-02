@@ -5,7 +5,7 @@ function Home() {
   const nav = useNavigate();
 
   function navigateToBillGeneration() {
-    nav("generate-bill",{replace:true});
+    nav("/generate-bill", { replace: true });
   }
 
   return (
