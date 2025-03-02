@@ -1,51 +1,18 @@
-import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  PDFViewer,
-} from "@react-pdf/renderer";
-
-const ProductSchema = z.object({
-  id: z.number().min(1),
-  name: z.string().min(2),
-  hsn: z.string().min(2),
-  batchNumber: z.string().min(2),
-  expiry: z.string().min(2),
-  mrp: z.number().min(0),
-  quantity: z.string().min(1),
-  freeQuantity: z.number().default(0),
-  rate: z.number().default(0),
-  amount: z.number().default(0),
-  discount: z.number().default(0),
-  cgst: z.number().default(0),
-  sgst: z.number().default(0),
-});
-
-// Bill Generation Form Schema
-const BillGenerationFormSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  email: z
-    .string()
-    .email({ message: "Invalid email address" })
-    .min(1, { message: "Email is required" }),
-  products: z.array(ProductSchema),
-});
+import { BillSchema } from "./types/bill";
+import { Product } from "./types/product";
+import { PDFViewer } from "@react-pdf/renderer";
+import BillPdfView from "./components/BillPdfView";
 
 const BillGenerationForm = () => {
-  // Initialize the form with React Hook Form and Zod
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(BillGenerationFormSchema),
+    resolver: zodResolver(BillSchema),
     defaultValues: {
       products: [
         {
@@ -72,14 +39,12 @@ const BillGenerationForm = () => {
     name: "products",
   });
 
-  // Handle form submission
   const onSubmit = (data) => {
     const { products } = data;
 
-    // Calculate total amount
     let totalBill = 0;
 
-    products.forEach((product) => {
+    products.forEach((product: Product) => {
       const rate = product.rate;
       const quantity = parseFloat(product.quantity) || 0;
       const discount = product.discount || 0;
@@ -334,7 +299,7 @@ const BillGenerationForm = () => {
           </div>
 
           <PDFViewer>
-            <DocumentView />
+            <BillPdfView />
           </PDFViewer>
         </form>
       </div>
@@ -343,30 +308,3 @@ const BillGenerationForm = () => {
 };
 
 export default BillGenerationForm;
-
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: "row",
-    backgroundColor: "#E4E4E4",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
-
-function DocumentView() {
-  return (
-    <Document>
-      <Page size='A4' style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #1</Text>
-        </View>
-        <View style={styles.section}>
-          <Text>Section #2</Text>
-        </View>
-      </Page>
-    </Document>
-  );
-}
