@@ -1,5 +1,6 @@
 import { Page, View, StyleSheet, Document, Text } from "@react-pdf/renderer";
 import { Bill } from "../types/bill";
+import { Product } from "../types/product";
 
 const styles = StyleSheet.create({
   page: {
@@ -14,6 +15,27 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     flexGrow: 1,
+  },
+  table: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: 20,
+  },
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 5,
+    borderBottom: "1px solid #ccc",
+  },
+  header: {
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 5,
+  },
+  cell: {
+    width: "30%",
+    textAlign: "center",
   },
 });
 
@@ -31,6 +53,23 @@ export default function BillPdfView({ bill }: IBillPdfView) {
         <View style={styles.section}>
           <Text>{bill.email}</Text>
         </View>
+        {bill.products.map((product: Product, index: number) => (
+          <View key={index} style={styles.row}>
+            <Text style={styles.cell}>{product.id}</Text>
+            <Text style={styles.cell}>{product.name}</Text>
+            <Text style={styles.cell}>{product.hsn}</Text>
+            <Text style={styles.cell}>{product.batchNumber}</Text>
+            <Text style={styles.cell}>{product.expiry}</Text>
+            <Text style={styles.cell}>{product.mrp}</Text>
+            <Text style={styles.cell}>{product.quantity}</Text>
+            <Text style={styles.cell}>{product.freeQuantity}</Text>
+            <Text style={styles.cell}>{product.rate}</Text>
+            <Text style={styles.cell}>{product.amount}</Text>
+            <Text style={styles.cell}>{product.discount}</Text>
+            <Text style={styles.cell}>{product.cgst}</Text>
+            <Text style={styles.cell}>{product.sgst}</Text>
+          </View>
+        ))}
       </Page>
     </Document>
   );
