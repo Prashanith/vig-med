@@ -1,6 +1,13 @@
 import { Page, View, StyleSheet, Document, Text } from "@react-pdf/renderer";
 import { Bill } from "../types/bill";
 import { Product } from "../types/product";
+import {
+  accountNumber,
+  address,
+  brand,
+  IFSC,
+  mobile,
+} from "../utils/billUtils";
 
 const styles = StyleSheet.create({
   page: {
@@ -15,6 +22,11 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     flexGrow: 1,
+  },
+  meta: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
   },
   table: {
     display: "flex",
@@ -47,6 +59,13 @@ export default function BillPdfView({ bill }: IBillPdfView) {
   return (
     <Document>
       <Page size='A4' style={styles.page}>
+        <View style={styles.meta}>
+          <Text>{brand}</Text>
+          <Text>{mobile}</Text>
+          <Text>{address}</Text>
+          <Text>{accountNumber}</Text>
+          <Text>{IFSC}</Text>
+        </View>
         <View style={styles.section}>
           <Text>{bill.name}</Text>
         </View>

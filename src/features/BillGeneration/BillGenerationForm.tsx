@@ -10,6 +10,7 @@ const BillGenerationForm = () => {
     register,
     handleSubmit,
     control,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(BillSchema),
@@ -299,7 +300,7 @@ const BillGenerationForm = () => {
           </div>
 
           <PDFViewer>
-            <BillPdfView />
+            <BillPdfView bill={getValues()} />
           </PDFViewer>
         </form>
       </div>
