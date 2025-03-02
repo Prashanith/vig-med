@@ -104,7 +104,7 @@ const BillGenerationForm = () => {
             type='text'
             id='name'
             {...register('name')}
-            className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            className='inputField'
           />
           {errors.name && <span className='text-red-500 mt-2'>{errors.name.message}</span>}
         </div>
@@ -116,7 +116,7 @@ const BillGenerationForm = () => {
             type='email'
             id='email'
             {...register('email')}
-            className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            className='inputField'
           />
           {errors.email && <span className='text-red-500 mt-2'>{errors.email.message}</span>}
         </div>
@@ -135,7 +135,7 @@ const BillGenerationForm = () => {
                     type='text'
                     {...register(`products.${index}.name`)}
                     placeholder='Name'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                   {errors.products?.[index]?.name && <span className='text-red-500 mt-2'>{errors.products[index].name?.message}</span>}
                 </div>
@@ -146,7 +146,7 @@ const BillGenerationForm = () => {
                     type='text'
                     {...register(`products.${index}.hsn`)}
                     placeholder='HSN'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
@@ -158,7 +158,7 @@ const BillGenerationForm = () => {
                     type='text'
                     {...register(`products.${index}.batchNumber`)}
                     placeholder='Batch Number'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
 
@@ -168,7 +168,7 @@ const BillGenerationForm = () => {
                     type='text'
                     {...register(`products.${index}.expiry`)}
                     placeholder='Expiry'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
@@ -180,7 +180,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.mrp`, { valueAsNumber: true })}
                     placeholder='MRP'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
 
@@ -190,7 +190,7 @@ const BillGenerationForm = () => {
                     type='text'
                     {...register(`products.${index}.quantity`)}
                     placeholder='Quantity'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
@@ -202,7 +202,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.freeQuantity`, { valueAsNumber: true })}
                     placeholder='Free Quantity'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
 
@@ -212,7 +212,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.rate`, { valueAsNumber: true })}
                     placeholder='Rate'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
@@ -224,7 +224,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.discount`, { valueAsNumber: true })}
                     placeholder='Discount'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
 
@@ -234,7 +234,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.cgst`, { valueAsNumber: true })}
                     placeholder='CGST'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
@@ -246,7 +246,7 @@ const BillGenerationForm = () => {
                     type='number'
                     {...register(`products.${index}.sgst`, { valueAsNumber: true })}
                     placeholder='SGST'
-                    className='border p-2 rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='inputField'
                   />
                 </div>
               </div>
