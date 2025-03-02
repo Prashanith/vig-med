@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Home from "./features/home/Home";
 import BillGenerationForm from "./features/BillGeneration/BillGenerationForm";
+import SplashScreen from "./features/SplashScreen/SplashScreen";
 
 function App() {
   return (
-    <div>
+    <div className='w-full h-screen overflow-y-scroll'>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/home' element={<SplashScreen />} />
         <Route path='/generate-bill' element={<BillGenerationForm />} />
       </Routes>
     </div>
