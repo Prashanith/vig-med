@@ -2,7 +2,14 @@ import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  PDFViewer,
+} from "@react-pdf/renderer";
 
 const ProductSchema = z.object({
   id: z.number().min(1),
@@ -325,6 +332,10 @@ const BillGenerationForm = () => {
               Generate Bill
             </button>
           </div>
+
+          <PDFViewer>
+            <DocumentView />
+          </PDFViewer>
         </form>
       </div>
     </div>
@@ -332,7 +343,6 @@ const BillGenerationForm = () => {
 };
 
 export default BillGenerationForm;
-
 
 const styles = StyleSheet.create({
   page: {
