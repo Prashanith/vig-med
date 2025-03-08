@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   meta: {
+    width:"100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
@@ -60,11 +61,16 @@ export default function BillPdfView({ bill }: IBillPdfView) {
     <Document>
       <Page size='A4' style={styles.page}>
         <View style={styles.meta}>
-          <Text>{brand}</Text>
-          <Text>{mobile}</Text>
-          <Text>{address}</Text>
-          <Text>{accountNumber}</Text>
-          <Text>{IFSC}</Text>
+          <View>
+            <Text>{brand}</Text>
+          </View>
+          <View>
+            <Text>{brand}</Text>
+            <Text>{mobile}</Text>
+            <Text>{address}</Text>
+            <Text>{accountNumber}</Text>
+            <Text>{IFSC}</Text>
+          </View>
         </View>
         <View style={styles.section}>
           <Text>{bill.name}</Text>

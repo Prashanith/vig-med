@@ -10,6 +10,9 @@ function Home() {
 
   return (
     <div className='w-full h-screen flex justify-center items-center'>
+      <nav>
+        Vigneshware Medical & General Stores
+      </nav>
       <ActionCard
         id='billGeneration'
         title='Create Bill'

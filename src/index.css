@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #2d336b;
+  --color-secondary: #a9b5df;
+  --color-tertiary: #fff2f2;
+  --color-primary-text: #000000;
+  --color-secondary-text: #fff2f2;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,7 +22,7 @@
 }
 
 body {
-  @apply w-full h-screen p-0 m-0;
+  @apply w-full h-screen p-0 m-0 bg-tertiary text-primary-text;
 }
 
 .inputField {
