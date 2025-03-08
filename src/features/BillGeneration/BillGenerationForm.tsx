@@ -68,9 +68,6 @@ const BillGenerationForm = () => {
 
   return (
     <div className='w-full flex flex-col justify-center items-center'>
-      <h1 className='text-3xl font-semibold text-center mb-6'>
-        Bill Generation
-      </h1>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
         {/* Name Field */}
         <div className='flex flex-col'>
