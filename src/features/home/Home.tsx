@@ -10,7 +10,7 @@ function Home() {
   }
 
   return (
-    <div className='w-full h-screen flex justify-center items-center gap-8'>
+    <div className='w-full h-full flex justify-center items-center gap-8'>
       <ActionCard
         id='billGeneration'
         title='Create Bill'
