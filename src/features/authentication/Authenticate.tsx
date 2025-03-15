@@ -1,7 +1,5 @@
 function Authenticate() {
-  return <div>
-    
-  </div>;
+  return <div>Authenticate</div>;
 }
 
 export default Authenticate;

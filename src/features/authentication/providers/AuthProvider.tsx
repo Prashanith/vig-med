@@ -2,6 +2,7 @@ import { User } from "firebase/auth";
 import { ReactNode, useState, useEffect } from "react";
 import { auth } from "../../../services/firebase";
 import { AuthContext } from "../context/useAuth";
+import { useNavigate } from "react-router-dom";
 
 interface IAuthProvider {
   children: ReactNode;
@@ -9,12 +10,12 @@ interface IAuthProvider {
 
 export function AuthProvider({ children }: IAuthProvider): JSX.Element {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false);
+      navigate("/home");
     });
     return unsubscribe;
   }, []);
@@ -23,11 +24,7 @@ export function AuthProvider({ children }: IAuthProvider): JSX.Element {
     currentUser,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export default AuthProvider;
