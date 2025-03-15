@@ -4,6 +4,7 @@ import BillGenerationForm from "./features/BillGeneration/BillGenerationForm";
 import SplashScreen from "./features/SplashScreen/SplashScreen";
 import AppScaffold from "./components/scaffold/AppScaffold";
 
+
 function App() {
   return (
     <Routes>
