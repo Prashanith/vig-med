@@ -40,7 +40,7 @@ const BillGenerationForm = () => {
     name: "products",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: { products: Product[] }) => {
     const { products } = data;
 
     let totalBill = 0;
