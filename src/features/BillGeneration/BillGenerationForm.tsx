@@ -2,8 +2,8 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BillSchema } from "./types/bill";
 import { Product } from "./types/product";
-import { PDFViewer } from "@react-pdf/renderer";
-import BillPdfView from "./components/BillPdfView";
+// import { PDFViewer } from "@react-pdf/renderer";
+// import BillPdfView from "./components/BillPdfView";
 
 const BillGenerationForm = () => {
   const {
@@ -295,9 +295,9 @@ const BillGenerationForm = () => {
           </button>
         </div>
 
-        <PDFViewer>
+        {/* <PDFViewer>
           <BillPdfView bill={getValues()} />
-        </PDFViewer>
+        </PDFViewer> */}
       </form>
     </div>
   );
