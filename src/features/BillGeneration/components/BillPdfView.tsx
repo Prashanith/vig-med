@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 8,
     minWidth: 17,
+    maxWidth: 100,
+    maxLines: 3,
     flexShrink: 0,
     overflow: "hidden",
     flexGrow: 1,
