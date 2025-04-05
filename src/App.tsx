@@ -8,8 +8,8 @@ import Authenticate from "./features/authentication/Authenticate";
 function App() {
   return (
     <Routes>
+      <Route path='/' element={<SplashScreen />} />
       <Route element={<AppScaffold />}>
-        <Route path='/' element={<SplashScreen />} />
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Authenticate />} />
         <Route path='/generate-bill' element={<BillGenerationForm />} />

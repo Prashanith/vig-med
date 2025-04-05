@@ -1,7 +1,7 @@
 function SplashScreen() {
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
-      <div className='logo'>Vigneshwara Medicals</div>
+    <div className='flex justify-center items-center w-full h-screen'>
+      <h1 className='font-stretch-semi-expanded text-primary-text text-8xl'>Vigneshwara Medicals</h1>
     </div>
   );
 }
