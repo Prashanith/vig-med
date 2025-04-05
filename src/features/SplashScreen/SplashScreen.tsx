@@ -1,7 +1,19 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+
 function SplashScreen() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/home");
+    }, 1500);
+  }, []);
+
   return (
     <div className='flex justify-center items-center w-full h-screen'>
-      <h1 className='font-stretch-semi-expanded text-primary-text text-8xl'>Vigneshwara Medicals</h1>
+      <p className='font-stretch-semi-expanded text-primary text-6xl font-bold underline underline-offset-8'>
+        VIGNESHWARA MEDICALS
+      </p>
     </div>
   );
 }

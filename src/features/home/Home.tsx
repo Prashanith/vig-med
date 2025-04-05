@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router";
 import ActionCard from "./components/ActionCard";
+import { FaHistory, FaMoneyBill, FaNotesMedical } from "react-icons/fa";
+import { FaMoneyBillTrendUp, FaNoteSticky } from "react-icons/fa6";
 
 function Home() {
   const nav = useNavigate();
@@ -13,14 +15,23 @@ function Home() {
       <ActionCard
         id='billGeneration'
         title='Create Bill'
-        desc=''
+        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
         onClick={() => navigateToBillGeneration()}
+        icon={<FaNoteSticky />}
+      />
+      <ActionCard
+        id='sales'
+        title='View Sales'
+        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
+        onClick={() => navigateToBillGeneration()}
+        icon={<FaMoneyBillTrendUp />}
       />
       <ActionCard
         id='billGeneration'
         title='View Past Bills'
-        desc=''
+        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
         onClick={() => navigateToBillGeneration()}
+        icon={<FaHistory />}
       />
     </div>
   );
