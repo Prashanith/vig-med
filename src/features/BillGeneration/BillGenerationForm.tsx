@@ -68,6 +68,9 @@ const BillGenerationForm = () => {
 
   return (
     <div className='w-full flex flex-col justify-center items-center'>
+      <PDFViewer className="w-full h-screen">
+        <BillPdfView bill={getValues()} />
+      </PDFViewer>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
         {/* Name Field */}
         <div className='flex flex-col'>
@@ -294,10 +297,6 @@ const BillGenerationForm = () => {
             Generate Bill
           </button>
         </div>
-
-        <PDFViewer>
-          <BillPdfView bill={getValues()} />
-        </PDFViewer>
       </form>
     </div>
   );
