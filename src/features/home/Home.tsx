@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import ActionCard from "./components/ActionCard";
-import { LucideNotebookPen, LucideNotebookTabs } from "lucide-react";
 
 function Home() {
   const nav = useNavigate();
@@ -16,14 +15,12 @@ function Home() {
         title='Create Bill'
         desc=''
         onClick={() => navigateToBillGeneration()}
-        icon={<LucideNotebookPen />}
       />
       <ActionCard
         id='billGeneration'
         title='View Past Bills'
         desc=''
         onClick={() => navigateToBillGeneration()}
-        icon={<LucideNotebookTabs />}
       />
     </div>
   );
