@@ -195,20 +195,6 @@ const BillGenerationForm = () => {
                 </div>
 
                 <div className='flex flex-col'>
-                  <label>Rate</label>
-                  <input
-                    type='number'
-                    {...register(`products.${index}.rate`, {
-                      valueAsNumber: true,
-                    })}
-                    placeholder='Rate'
-                    className='inputField'
-                  />
-                </div>
-              </div>
-
-              <div className='grid grid-cols-2 gap-4 mt-4'>
-                <div className='flex flex-col'>
                   <label>Discount</label>
                   <input
                     type='number'
@@ -219,7 +205,9 @@ const BillGenerationForm = () => {
                     className='inputField'
                   />
                 </div>
+              </div>
 
+              <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>CGST</label>
                   <input
@@ -231,9 +219,6 @@ const BillGenerationForm = () => {
                     className='inputField'
                   />
                 </div>
-              </div>
-
-              <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>SGST</label>
                   <input

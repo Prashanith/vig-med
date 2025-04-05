@@ -71,18 +71,19 @@ const styles = StyleSheet.create({
   headerRow: {
     backgroundColor: "#007BFF",
     flexDirection: "row",
-    padding: "2px 6px",
+    padding: "2px 4px",
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 8,
     textTransform: "uppercase",
+    flex: "0",
   },
   row: {
     flexDirection: "row",
-    padding: 10,
+    padding: "2px 6px",
     borderBottom: "1px solid #eee",
     backgroundColor: "#fff",
-    fontSize: 12,
+    fontSize: 8,
   },
   cell: {
     flex: 1,
@@ -147,10 +148,10 @@ export default function BillPdfView({ bill }: IBillPdfView) {
               <Text style={styles.companyDetails}>{bill.name}</Text>
               <Text style={styles.companyDetails}>{bill.email}</Text>
               <Text style={styles.companyDetails}>
-                Invoice Number:{" "} {bill.invoiceNumber}
+                Invoice Number: {bill.invoiceNumber}
               </Text>
               <Text style={styles.companyDetails}>
-                Date:{" "}{new Date().toLocaleDateString()}
+                Date: {new Date().toLocaleDateString()}
               </Text>
             </View>
           </View>
@@ -159,26 +160,22 @@ export default function BillPdfView({ bill }: IBillPdfView) {
           <View style={styles.table}>
             <View style={styles.headerRow}>
               {[
-                "ID",
+                "Id",
                 "Name",
                 "HSN",
                 "Batch",
-                "Expiry",
-                "MRP",
-                "Qty",
+                "EXP",
+                "M.R.P",
+                "QTY",
                 "Free",
-                "Rate",
-                "Amount",
-                "Discount",
+                "AMT",
+                "DISC",
                 "CGST",
                 "SGST",
               ].map((header, index) => (
                 <Text
                   key={index}
-                  style={[
-                    styles.cell,
-                    index === 11 || index === 12 ? styles.lastCell : {},
-                  ]}
+                  style={[styles.cell, index === 11 ? styles.lastCell : {}]}
                 >
                   {header}
                 </Text>
@@ -203,10 +200,7 @@ export default function BillPdfView({ bill }: IBillPdfView) {
                 ].map((value, idx) => (
                   <Text
                     key={idx}
-                    style={[
-                      styles.cell,
-                      idx === 11 || idx === 12 ? styles.lastCell : {},
-                    ]}
+                    style={[styles.cell, idx === 11 ? styles.lastCell : {}]}
                   >
                     {value}
                   </Text>
