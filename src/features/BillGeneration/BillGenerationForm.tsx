@@ -10,7 +10,6 @@ const BillGenerationForm = () => {
     register,
     handleSubmit,
     control,
-    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(BillSchema),

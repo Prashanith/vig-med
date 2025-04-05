@@ -8,7 +8,7 @@ interface IAuthProvider {
   children: ReactNode;
 }
 
-export function AuthProvider({ children }: IAuthProvider): JSX.Element {
+export function AuthProvider({ children }: IAuthProvider) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ interface IAppProvider {
   children: ReactNode;
 }
 
-export function AppProvider({ children }: IAppProvider): JSX.Element {
+export function AppProvider({ children }: IAppProvider) {
   return <AppProvider>{children}</AppProvider>;
 }
 
