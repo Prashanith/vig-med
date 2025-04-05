@@ -16,6 +16,9 @@ const BillGenerationForm = () => {
   } = useForm({
     resolver: zodResolver(BillSchema),
     defaultValues: {
+      name: "",
+      email: "",
+      totalAmount: 0,
       products: [
         {
           id: 1,
@@ -256,7 +259,7 @@ const BillGenerationForm = () => {
                 batchNumber: "",
                 expiry: "",
                 mrp: 0,
-                quantity: "",
+                quantity: 0,
                 freeQuantity: 0,
                 rate: 0,
                 amount: 0,

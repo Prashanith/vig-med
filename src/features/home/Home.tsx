@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import ActionCard from "./components/ActionCard";
-import { FaHistory, FaMoneyBill, FaNotesMedical } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 import { FaMoneyBillTrendUp, FaNoteSticky } from "react-icons/fa6";
 
 function Home() {

@@ -10,55 +10,46 @@ import {
   mobile,
 } from "../utils/billUtils";
 
+const columns = [
+  { label: "ID", key: "id", flex: 1 },
+  { label: "NAME", key: "name", flex: 2.5 },
+  { label: "HSN", key: "hsn", flex: 1.5 },
+  { label: "Batch", key: "batchNumber", flex: 1.5 },
+  { label: "EXP", key: "expiry", flex: 1 },
+  { label: "M.R.P", key: "mrp", flex: 1 },
+  { label: "QTY", key: "quantity", flex: 1 },
+  { label: "Free", key: "freeQuantity", flex: 1 },
+  { label: "AMT", key: "amount", flex: 1.5 },
+  { label: "DISC", key: "discount", flex: 1 },
+  { label: "CGST", key: "cgst", flex: 1 },
+  { label: "SGST", key: "sgst", flex: 1 },
+];
+
 const styles = StyleSheet.create({
-  page: {
-    padding: 10,
-    backgroundColor: "#f5f5f5",
-  },
+  page: { padding: 10, backgroundColor: "#f5f5f5" },
   container: {
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 8,
     boxShadow: "0 4px 8px rgba(0,0,0,0.05)",
+    overflow: "hidden",
   },
   header: {
     marginBottom: 20,
     borderBottom: "2px solid #007BFF",
     paddingBottom: 10,
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     gap: 20,
-    alignItems: "flex-start",
   },
-  brand: {
-    fontSize: 13,
-    color: "#333",
-    marginBottom: 6,
-    fontWeight: "bold",
-  },
-  companyDetails: {
-    fontSize: 13,
-    color: "#333",
-    marginBottom: 4,
-    fontWeight: "medium",
-  },
+  brand: { fontSize: 13, color: "#333", marginBottom: 6, fontWeight: "bold" },
+  companyDetails: { fontSize: 12, color: "#333", marginBottom: 4 },
   invoiceTitle: {
     fontSize: 15,
     fontWeight: "bold",
     color: "#007BFF",
     marginTop: 5,
     textAlign: "center",
-  },
-  meta: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#f9f9f9",
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 20,
-  },
-  section: {
-    marginVertical: 10,
   },
   table: {
     display: "flex",
@@ -67,32 +58,37 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     borderRadius: 5,
     overflow: "hidden",
+    marginVertical: 10,
+    width: "100%",
   },
   headerRow: {
     backgroundColor: "#007BFF",
     flexDirection: "row",
-    padding: "2px 4px",
+    padding: 4,
     color: "#fff",
     fontWeight: "bold",
     fontSize: 8,
-    textTransform: "uppercase",
-    flex: "0",
+    flexWrap: "wrap", // Enables wrapping
   },
   row: {
     flexDirection: "row",
-    padding: "2px 6px",
+    padding: 4,
     borderBottom: "1px solid #eee",
     backgroundColor: "#fff",
     fontSize: 8,
+    flexWrap: "wrap", // Enables wrapping
   },
   cell: {
-    flex: 1,
-    textAlign: "left",
-    padding: 4,
+    padding: 2,
     borderRight: "1px solid #eee",
-  },
-  lastCell: {
-    borderRight: "none",
+    textAlign: "center",
+    fontSize: 8,
+    minWidth: 17,
+    flexShrink: 0,
+    overflow: "hidden",
+    flexGrow: 1,
+    textOverflow: "ellipsis",
+    wordBreak: "break-word",
   },
   summary: {
     marginTop: 20,
@@ -109,11 +105,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#888",
   },
-  invoiceDetails: {
-    marginBottom: 15,
-    fontSize: 12,
-    color: "#555",
-  },
 });
 
 interface IBillPdfView {
@@ -122,7 +113,7 @@ interface IBillPdfView {
 
 export default function BillPdfView({ bill }: IBillPdfView) {
   const totalAmount = bill.products.reduce(
-    (acc, product) => acc + product.amount,
+    (acc, product) => acc + (product.amount || 0),
     0
   );
 
@@ -132,7 +123,6 @@ export default function BillPdfView({ bill }: IBillPdfView) {
         <View style={styles.container}>
           <View style={styles.header}>
             <View>
-              {/* Header */}
               <Text style={styles.brand}>{brand.toUpperCase()}</Text>
               <Text style={styles.companyDetails}>{address}</Text>
               <Text style={styles.companyDetails}>Phone: {mobile}</Text>
@@ -143,7 +133,7 @@ export default function BillPdfView({ bill }: IBillPdfView) {
               <Text style={styles.companyDetails}>GSTIN: {GSTIN}</Text>
               <Text style={styles.invoiceTitle}>Invoice</Text>
             </View>
-            {/* Invoice Details */}
+
             <View>
               <Text style={styles.companyDetails}>{bill.name}</Text>
               <Text style={styles.companyDetails}>{bill.email}</Text>
@@ -156,65 +146,46 @@ export default function BillPdfView({ bill }: IBillPdfView) {
             </View>
           </View>
 
-          {/* Product Table */}
           <View style={styles.table}>
             <View style={styles.headerRow}>
-              {[
-                "Id",
-                "Name",
-                "HSN",
-                "Batch",
-                "EXP",
-                "M.R.P",
-                "QTY",
-                "Free",
-                "AMT",
-                "DISC",
-                "CGST",
-                "SGST",
-              ].map((header, index) => (
+              {columns.map((col, index) => (
                 <Text
                   key={index}
-                  style={[styles.cell, index === 11 ? styles.lastCell : {}]}
+                  style={[
+                    styles.cell,
+                    { flex: col.flex },
+                    index === columns.length - 1 ? { borderRight: "none" } : {},
+                  ]}
                 >
-                  {header}
+                  {col.label}
                 </Text>
               ))}
             </View>
+
             {bill.products.map((product: Product, index: number) => (
               <View key={index} style={styles.row}>
-                {[
-                  product.id,
-                  product.name,
-                  product.hsn,
-                  product.batchNumber,
-                  product.expiry,
-                  product.mrp,
-                  product.quantity,
-                  product.freeQuantity,
-                  product.rate,
-                  product.amount,
-                  product.discount,
-                  product.cgst,
-                  product.sgst,
-                ].map((value, idx) => (
+                {columns.map((col) => (
                   <Text
-                    key={idx}
-                    style={[styles.cell, idx === 11 ? styles.lastCell : {}]}
+                    key={col.key}
+                    style={[
+                      styles.cell,
+                      { flex: col.flex },
+                      index === columns.length - 1
+                        ? { borderRight: "none" }
+                        : {},
+                    ]}
                   >
-                    {value}
+                    {product[col.key]}
                   </Text>
                 ))}
               </View>
             ))}
           </View>
 
-          {/* Summary Section */}
           <View style={styles.summary}>
             <Text>Total Amount: ₹{totalAmount.toFixed(2)}</Text>
           </View>
 
-          {/* Footer */}
           <Text style={styles.footer}>Thank you for your business!</Text>
         </View>
       </Page>
