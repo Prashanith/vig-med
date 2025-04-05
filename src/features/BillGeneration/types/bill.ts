@@ -4,6 +4,7 @@ import { ProductSchema } from "./product";
 export const BillSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   invoiceNumber: z.string().min(1, { message: "Invoice Number is required" }),
+  totalAmount: z.number().default(0),
   email: z
     .string()
     .email({ message: "Invalid email address" })

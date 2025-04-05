@@ -10,6 +10,7 @@ const BillGenerationForm = () => {
     register,
     handleSubmit,
     getValues,
+    setValue,
     control,
     formState: { errors },
   } = useForm({
@@ -23,7 +24,7 @@ const BillGenerationForm = () => {
           batchNumber: "",
           expiry: "",
           mrp: 0,
-          quantity: "",
+          quantity: 1,
           freeQuantity: 0,
           rate: 0,
           amount: 0,
@@ -42,33 +43,29 @@ const BillGenerationForm = () => {
 
   const onSubmit = (data: { products: Product[] }) => {
     const { products } = data;
-
     let totalBill = 0;
-
     products.forEach((product: Product) => {
-      const rate = product.rate;
-      const quantity = parseFloat(product.quantity) || 0;
-      const discount = product.discount || 0;
-      const cgst = product.cgst || 0;
-      const sgst = product.sgst || 0;
+      const { mrp, quantity, discount, cgst, sgst } = product;
 
-      const discountedPrice = rate * quantity * (1 - discount / 100);
-      const taxAmount = (discountedPrice * (cgst + sgst)) / 100;
+      // Step 1: Apply discount
+      const discountedPrice = mrp * quantity * (1 - discount / 100);
+
+      // Step 2: Apply CGST and SGST
+      const totalGST = cgst + sgst; // Total GST percentage
+      const taxAmount = (discountedPrice * totalGST) / 100;
+
+      // Step 3: Final amount calculation
       const amount = discountedPrice + taxAmount;
-
-      // Update product amount
-      product.amount = amount;
-
+      product.amount = parseFloat(amount.toFixed(2)); // Round to 2 decimal places
       totalBill += amount;
     });
-
-    console.log("Final Total Bill: ", totalBill);
-    console.log("Form Data: ", data);
+    setValue("products", products);
+    setValue("totalAmount", totalBill);
   };
 
   return (
     <div className='w-full flex flex-col justify-center items-center'>
-      <PDFViewer className="w-full h-screen">
+      <PDFViewer className='w-full h-screen'>
         <BillPdfView bill={getValues()} />
       </PDFViewer>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
