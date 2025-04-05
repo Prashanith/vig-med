@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import Home from "./features/home/Home";
 import BillGenerationForm from "./features/BillGeneration/BillGenerationForm";
 import SplashScreen from "./features/SplashScreen/SplashScreen";

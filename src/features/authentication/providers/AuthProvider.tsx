@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import { ReactNode, useState, useEffect } from "react";
 import { auth } from "../../../services/firebase";
 import { AuthContext } from "../context/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 interface IAuthProvider {
   children: ReactNode;
