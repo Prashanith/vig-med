@@ -1,9 +1,9 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InvoiceSchema } from "./types/bill";
+import { InvoiceSchema } from "./types/invoice";
 import { Product } from "./types/product";
 import { PDFViewer } from "@react-pdf/renderer";
-import InvoiceViewer from "./components/BillPdfView";
+import InvoiceViewer from "./components/InvoiceViewer";
 
 const Invoice = () => {
   const {

@@ -34,7 +34,7 @@ body {
 }
 
 .splashBg {
-  background: url("/public/splash.svg");
+  background: url("/splash.svg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
