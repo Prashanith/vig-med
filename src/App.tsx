@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path='/' element={<SplashScreen />} />
       <Route element={<AppScaffold />}>
-        <Route path='/home' element={<Home />} />
+        <Route path='/dashboard' element={<Home />} />
         <Route path='/login' element={<Authenticate />} />
         <Route path='/generate-bill' element={<BillGenerationForm />} />
       </Route>

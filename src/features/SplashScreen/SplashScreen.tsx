@@ -5,13 +5,13 @@ function SplashScreen() {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      navigate("/home");
+      navigate("/dashboard");
     }, 1500);
   }, []);
 
   return (
-    <div className='flex justify-center items-center w-full h-screen'>
-      <p className='font-stretch-semi-expanded text-primary text-6xl font-bold underline underline-offset-8'>
+    <div className='flex justify-center items-center w-full h-screen splashBg'>
+      <p className='font-stretch-semi-expanded text-primary text-6xl font-bold underline-offset-8'>
         VIGNESHWARA MEDICALS
       </p>
     </div>
