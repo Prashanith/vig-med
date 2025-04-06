@@ -54,7 +54,7 @@ const Invoice = () => {
     });
     setValue("products", products);
     setValue("totalAmount", totalBill);
-    setPreviewInvoice((prev) => true);
+    setPreviewInvoice(true);
   };
 
   return (
@@ -225,6 +225,7 @@ const Invoice = () => {
                     type='number'
                     {...register(`products.${currentIndex}.mrp`, {
                       valueAsNumber: true,
+                      required: "MRP is required",
                     })}
                     placeholder='MRP'
                     className='inputField'
@@ -249,6 +250,7 @@ const Invoice = () => {
                     type='number'
                     {...register(`products.${currentIndex}.freeQuantity`, {
                       valueAsNumber: true,
+                      required: "Free Qty is required",
                     })}
                     placeholder='Free Quantity'
                     className='inputField'
@@ -261,6 +263,7 @@ const Invoice = () => {
                     type='number'
                     {...register(`products.${currentIndex}.discount`, {
                       valueAsNumber: true,
+                      required: "Discount is Required",
                     })}
                     placeholder='Discount'
                     className='inputField'
@@ -275,6 +278,7 @@ const Invoice = () => {
                     type='number'
                     {...register(`products.${currentIndex}.cgst`, {
                       valueAsNumber: true,
+                      required: "C.G.S.T is required",
                     })}
                     placeholder='CGST'
                     className='inputField'
@@ -286,6 +290,7 @@ const Invoice = () => {
                     type='number'
                     {...register(`products.${currentIndex}.sgst`, {
                       valueAsNumber: true,
+                      required: "S.G.S.T is required",
                     })}
                     placeholder='SGST'
                     className='inputField'

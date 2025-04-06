@@ -172,7 +172,7 @@ export default function InvoiceViewer({ invoice: invoice }: IInvoiceViewView) {
                         : {},
                     ]}
                   >
-                    {product[col.key]}
+                    {Object(product)[col.key]}
                   </Text>
                 ))}
               </View>
