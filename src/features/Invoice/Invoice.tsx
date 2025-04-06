@@ -117,7 +117,8 @@ const Invoice = () => {
               <div className='flex justify-center'>
                 <button
                   type='button'
-                  onClick={() =>
+                  onClick={() => {
+                    // setCurrentIndex(fields.length + 1);
                     append({
                       id: fields.length + 1,
                       name: "",
@@ -132,8 +133,8 @@ const Invoice = () => {
                       discount: 0,
                       cgst: 0,
                       sgst: 0,
-                    })
-                  }
+                    });
+                  }}
                   className='bg-blue-500 text-white py-2 px-4 rounded-md'
                 >
                   Add Product
@@ -148,145 +149,140 @@ const Invoice = () => {
           </div>
         </div>
 
-        {/* Product Fields */}
-        <h2 className='text-2xl font-semibold mb-4'>Products</h2>
-        <div className='space-y-4'>
-          <h3 className='text-xl mb-3'>Product {currentIndex + 1}</h3>
-          <div className='grid grid-cols-2 gap-4'>
-            <div className='flex flex-col'>
-              <label>Product Name</label>
-              <input
-                type='text'
-                {...register(`products.${currentIndex}.name`)}
-                placeholder='Name'
-                className='inputField'
-              />
-              {errors.products?.[currentIndex]?.name && (
-                <span className='text-red-500 mt-2'>
-                  {errors.products[currentIndex].name?.message}
-                </span>
-              )}
+        {currentIndex != -1 && (
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300 ${
+              currentIndex != -1
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <h3 className='text-xl mb-3'>Product {currentIndex + 1}</h3>
+            <div className='grid grid-cols-2 gap-4'>
+              <div className='flex flex-col'>
+                <label>Product Name</label>
+                <input
+                  type='text'
+                  {...register(`products.${currentIndex}.name`)}
+                  placeholder='Name'
+                  className='inputField'
+                />
+                {errors.products?.[currentIndex]?.name && (
+                  <span className='text-red-500 mt-2'>
+                    {errors.products[currentIndex].name?.message}
+                  </span>
+                )}
+              </div>
+
+              <div className='flex flex-col'>
+                <label>HSN</label>
+                <input
+                  type='text'
+                  {...register(`products.${currentIndex}.hsn`)}
+                  placeholder='HSN'
+                  className='inputField'
+                />
+              </div>
             </div>
 
-            <div className='flex flex-col'>
-              <label>HSN</label>
-              <input
-                type='text'
-                {...register(`products.${currentIndex}.hsn`)}
-                placeholder='HSN'
-                className='inputField'
-              />
+            <div className='grid grid-cols-2 gap-4 mt-4'>
+              <div className='flex flex-col'>
+                <label>Batch Number</label>
+                <input
+                  type='text'
+                  {...register(`products.${currentIndex}.batchNumber`)}
+                  placeholder='Batch Number'
+                  className='inputField'
+                />
+              </div>
+
+              <div className='flex flex-col'>
+                <label>Expiry Date</label>
+                <input
+                  type='text'
+                  {...register(`products.${currentIndex}.expiry`)}
+                  placeholder='Expiry'
+                  className='inputField'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-2 gap-4 mt-4'>
+              <div className='flex flex-col'>
+                <label>MRP</label>
+                <input
+                  type='number'
+                  {...register(`products.${currentIndex}.mrp`, {
+                    valueAsNumber: true,
+                  })}
+                  placeholder='MRP'
+                  className='inputField'
+                />
+              </div>
+
+              <div className='flex flex-col'>
+                <label>Quantity</label>
+                <input
+                  type='text'
+                  {...register(`products.${currentIndex}.quantity`)}
+                  placeholder='Quantity'
+                  className='inputField'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-2 gap-4 mt-4'>
+              <div className='flex flex-col'>
+                <label>Free Quantity</label>
+                <input
+                  type='number'
+                  {...register(`products.${currentIndex}.freeQuantity`, {
+                    valueAsNumber: true,
+                  })}
+                  placeholder='Free Quantity'
+                  className='inputField'
+                />
+              </div>
+
+              <div className='flex flex-col'>
+                <label>Discount</label>
+                <input
+                  type='number'
+                  {...register(`products.${currentIndex}.discount`, {
+                    valueAsNumber: true,
+                  })}
+                  placeholder='Discount'
+                  className='inputField'
+                />
+              </div>
+            </div>
+
+            <div className='grid grid-cols-2 gap-4 mt-4'>
+              <div className='flex flex-col'>
+                <label>CGST</label>
+                <input
+                  type='number'
+                  {...register(`products.${currentIndex}.cgst`, {
+                    valueAsNumber: true,
+                  })}
+                  placeholder='CGST'
+                  className='inputField'
+                />
+              </div>
+              <div className='flex flex-col'>
+                <label>SGST</label>
+                <input
+                  type='number'
+                  {...register(`products.${currentIndex}.sgst`, {
+                    valueAsNumber: true,
+                  })}
+                  placeholder='SGST'
+                  className='inputField'
+                />
+              </div>
             </div>
           </div>
-
-          <div className='grid grid-cols-2 gap-4 mt-4'>
-            <div className='flex flex-col'>
-              <label>Batch Number</label>
-              <input
-                type='text'
-                {...register(`products.${currentIndex}.batchNumber`)}
-                placeholder='Batch Number'
-                className='inputField'
-              />
-            </div>
-
-            <div className='flex flex-col'>
-              <label>Expiry Date</label>
-              <input
-                type='text'
-                {...register(`products.${currentIndex}.expiry`)}
-                placeholder='Expiry'
-                className='inputField'
-              />
-            </div>
-          </div>
-
-          <div className='grid grid-cols-2 gap-4 mt-4'>
-            <div className='flex flex-col'>
-              <label>MRP</label>
-              <input
-                type='number'
-                {...register(`products.${currentIndex}.mrp`, {
-                  valueAsNumber: true,
-                })}
-                placeholder='MRP'
-                className='inputField'
-              />
-            </div>
-
-            <div className='flex flex-col'>
-              <label>Quantity</label>
-              <input
-                type='text'
-                {...register(`products.${currentIndex}.quantity`)}
-                placeholder='Quantity'
-                className='inputField'
-              />
-            </div>
-          </div>
-
-          <div className='grid grid-cols-2 gap-4 mt-4'>
-            <div className='flex flex-col'>
-              <label>Free Quantity</label>
-              <input
-                type='number'
-                {...register(`products.${currentIndex}.freeQuantity`, {
-                  valueAsNumber: true,
-                })}
-                placeholder='Free Quantity'
-                className='inputField'
-              />
-            </div>
-
-            <div className='flex flex-col'>
-              <label>Discount</label>
-              <input
-                type='number'
-                {...register(`products.${currentIndex}.discount`, {
-                  valueAsNumber: true,
-                })}
-                placeholder='Discount'
-                className='inputField'
-              />
-            </div>
-          </div>
-
-          <div className='grid grid-cols-2 gap-4 mt-4'>
-            <div className='flex flex-col'>
-              <label>CGST</label>
-              <input
-                type='number'
-                {...register(`products.${currentIndex}.cgst`, {
-                  valueAsNumber: true,
-                })}
-                placeholder='CGST'
-                className='inputField'
-              />
-            </div>
-            <div className='flex flex-col'>
-              <label>SGST</label>
-              <input
-                type='number'
-                {...register(`products.${currentIndex}.sgst`, {
-                  valueAsNumber: true,
-                })}
-                placeholder='SGST'
-                className='inputField'
-              />
-            </div>
-          </div>
-
-          <div className='flex justify-end mt-4'>
-            <button
-              type='button'
-              onClick={() => remove(currentIndex)}
-              className='bg-red-500 text-white py-2 px-4 rounded-md'
-            >
-              Remove Product
-            </button>
-          </div>
-        </div>
-
+        )}
         <div className='flex justify-center'>
           <button
             type='submit'
@@ -296,9 +292,11 @@ const Invoice = () => {
           </button>
         </div>
       </form>
-      <PDFViewer className='w-full h-screen'>
-        <InvoiceViewer invoice={getValues()} />
-      </PDFViewer>
+      {getValues() != null && getValues().products.length > 0 && (
+        <PDFViewer className='w-full h-screen'>
+          <InvoiceViewer invoice={getValues()} />
+        </PDFViewer>
+      )}
     </div>
   );
 };

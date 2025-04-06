@@ -84,9 +84,15 @@ const ProductTable: React.FC<ProductTableProps> = ({
             <td className='border border-gray-300 px-4 py-3'>
               {product.sgst.toFixed(2)}
             </td>
-            <td className='border border-gray-300 px-4 py-3'>
-              <FaDeleteLeft onClick={() => onDelete(index)} />
-              <FaEdit onClick={() => onEdit(index)} />
+            <td className='border border-gray-300 px-4 py-3 flex justify-center items-center space-x-6'>
+              <FaDeleteLeft
+                className='cursor-pointer'
+                onClick={() => onDelete(index)}
+              />
+              <FaEdit
+                className='cursor-pointer'
+                onClick={() => onEdit(index)}
+              />
             </td>
           </tr>
         ))}
