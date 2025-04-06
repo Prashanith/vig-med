@@ -1,5 +1,5 @@
 import { Page, View, StyleSheet, Document, Text } from "@react-pdf/renderer";
-import { Bill } from "../types/bill";
+import { Invoice } from "../types/invoice";
 import { Product } from "../types/product";
 import {
   accountNumber,
@@ -109,16 +109,11 @@ const styles = StyleSheet.create({
   },
 });
 
-interface IBillPdfView {
-  bill: Bill;
+interface IInvoiceViewView {
+  invoice: Invoice;
 }
 
-export default function BillPdfView({ bill }: IBillPdfView) {
-  const totalAmount = bill.products.reduce(
-    (acc, product) => acc + (product.amount || 0),
-    0
-  );
-
+export default function InvoiceViewer({ invoice: invoice }: IInvoiceViewView) {
   return (
     <Document>
       <Page size='A4' style={styles.page}>
@@ -137,10 +132,10 @@ export default function BillPdfView({ bill }: IBillPdfView) {
             </View>
 
             <View>
-              <Text style={styles.companyDetails}>{bill.name}</Text>
-              <Text style={styles.companyDetails}>{bill.email}</Text>
+              <Text style={styles.companyDetails}>{invoice.name}</Text>
+              <Text style={styles.companyDetails}>{invoice.email}</Text>
               <Text style={styles.companyDetails}>
-                Invoice Number: {bill.invoiceNumber}
+                Invoice Number: {invoice.invoiceNumber}
               </Text>
               <Text style={styles.companyDetails}>
                 Date: {new Date().toLocaleDateString()}
@@ -164,7 +159,7 @@ export default function BillPdfView({ bill }: IBillPdfView) {
               ))}
             </View>
 
-            {bill.products.map((product: Product, index: number) => (
+            {invoice.products.map((product: Product, index: number) => (
               <View key={index} style={styles.row}>
                 {columns.map((col) => (
                   <Text
@@ -185,7 +180,7 @@ export default function BillPdfView({ bill }: IBillPdfView) {
           </View>
 
           <View style={styles.summary}>
-            <Text>Total Amount: ₹{totalAmount.toFixed(2)}</Text>
+            <Text>Total Amount: ₹{invoice.totalAmount.toFixed(2)}</Text>
           </View>
 
           <Text style={styles.footer}>Thank you for your business!</Text>

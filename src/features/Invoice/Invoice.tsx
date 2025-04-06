@@ -1,11 +1,11 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BillSchema } from "./types/bill";
+import { InvoiceSchema } from "./types/bill";
 import { Product } from "./types/product";
 import { PDFViewer } from "@react-pdf/renderer";
-import BillPdfView from "./components/BillPdfView";
+import InvoiceViewer from "./components/BillPdfView";
 
-const BillGenerationForm = () => {
+const Invoice = () => {
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ const BillGenerationForm = () => {
     control,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(BillSchema),
+    resolver: zodResolver(InvoiceSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -69,7 +69,7 @@ const BillGenerationForm = () => {
   return (
     <div className='w-full flex flex-col justify-center items-center'>
       <PDFViewer className='w-full h-screen'>
-        <BillPdfView bill={getValues()} />
+        <InvoiceViewer bill={getValues()} />
       </PDFViewer>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
         {/* Name Field */}
@@ -279,7 +279,7 @@ const BillGenerationForm = () => {
             type='submit'
             className='bg-green-500 text-white py-2 px-4 rounded-md mt-6'
           >
-            Generate Bill
+            Generate Invoice
           </button>
         </div>
       </form>
@@ -287,4 +287,4 @@ const BillGenerationForm = () => {
   );
 };
 
-export default BillGenerationForm;
+export default Invoice;

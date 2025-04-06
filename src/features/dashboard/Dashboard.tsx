@@ -3,7 +3,7 @@ import ActionCard from "./components/ActionCard";
 import { FaHistory } from "react-icons/fa";
 import { FaMoneyBillTrendUp, FaNoteSticky } from "react-icons/fa6";
 
-function Home() {
+function Dashboard() {
   const nav = useNavigate();
 
   function navigateToBillGeneration() {
@@ -37,4 +37,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Dashboard;

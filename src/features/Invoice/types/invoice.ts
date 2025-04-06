@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ProductSchema } from "./product";
 
-export const BillSchema = z.object({
+export const InvoiceSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   invoiceNumber: z.string().min(1, { message: "Invoice Number is required" }),
   totalAmount: z.number().default(0),
@@ -12,4 +12,4 @@ export const BillSchema = z.object({
   products: z.array(ProductSchema),
 });
 
-export type Bill = z.infer<typeof BillSchema>;
+export type Invoice = z.infer<typeof InvoiceSchema>;

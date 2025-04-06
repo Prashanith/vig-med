@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
-import Home from "./features/home/Home";
-import BillGenerationForm from "./features/BillGeneration/BillGenerationForm";
+import Dashboard from "./features/dashboard/Dashboard";
+import Invoice from "./features/Invoice/Invoice";
 import SplashScreen from "./features/SplashScreen/SplashScreen";
 import AppScaffold from "./components/scaffold/AppScaffold";
 import Authenticate from "./features/authentication/Authenticate";
@@ -10,9 +10,9 @@ function App() {
     <Routes>
       <Route path='/' element={<SplashScreen />} />
       <Route element={<AppScaffold />}>
-        <Route path='/dashboard' element={<Home />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/login' element={<Authenticate />} />
-        <Route path='/generate-bill' element={<BillGenerationForm />} />
+        <Route path='/generate-bill' element={<Invoice />} />
       </Route>
     </Routes>
   );
