@@ -69,7 +69,7 @@ const Invoice = () => {
   return (
     <div className='w-full flex flex-col justify-center items-center'>
       <PDFViewer className='w-full h-screen'>
-        <InvoiceViewer bill={getValues()} />
+        <InvoiceViewer invoice={getValues()} />
       </PDFViewer>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
         {/* Name Field */}
