@@ -223,10 +223,7 @@ const Invoice = () => {
                   <label>MRP</label>
                   <input
                     type='number'
-                    {...register(`products.${currentIndex}.mrp`, {
-                      valueAsNumber: true,
-                      required: "MRP is required",
-                    })}
+                    {...register(`products.${currentIndex}.mrp`)}
                     placeholder='MRP'
                     className='inputField'
                   />
@@ -247,11 +244,7 @@ const Invoice = () => {
                 <div className='flex flex-col'>
                   <label>Free Quantity</label>
                   <input
-                    type='number'
-                    {...register(`products.${currentIndex}.freeQuantity`, {
-                      valueAsNumber: true,
-                      required: "Free Qty is required",
-                    })}
+                    {...register(`products.${currentIndex}.freeQuantity`)}
                     placeholder='Free Quantity'
                     className='inputField'
                   />
@@ -261,10 +254,7 @@ const Invoice = () => {
                   <label>Discount</label>
                   <input
                     type='number'
-                    {...register(`products.${currentIndex}.discount`, {
-                      valueAsNumber: true,
-                      required: "Discount is Required",
-                    })}
+                    {...register(`products.${currentIndex}.discount`)}
                     placeholder='Discount'
                     className='inputField'
                   />
@@ -275,11 +265,7 @@ const Invoice = () => {
                 <div className='flex flex-col'>
                   <label>CGST</label>
                   <input
-                    type='number'
-                    {...register(`products.${currentIndex}.cgst`, {
-                      valueAsNumber: true,
-                      required: "C.G.S.T is required",
-                    })}
+                    {...register(`products.${currentIndex}.cgst`)}
                     placeholder='CGST'
                     className='inputField'
                   />
@@ -288,10 +274,7 @@ const Invoice = () => {
                   <label>SGST</label>
                   <input
                     type='number'
-                    {...register(`products.${currentIndex}.sgst`, {
-                      valueAsNumber: true,
-                      required: "S.G.S.T is required",
-                    })}
+                    {...register(`products.${currentIndex}.sgst`)}
                     placeholder='SGST'
                     className='inputField'
                   />
