@@ -8,6 +8,7 @@ import ProductTable from "./components/ProductTable";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaFileInvoice, FaPlus } from "react-icons/fa6";
+import InputField from "../../components/inputField/InputField";
 
 const Invoice = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -74,8 +75,7 @@ const Invoice = () => {
               <label htmlFor='name' className='text-lg'>
                 Name
               </label>
-              <input
-                type='text'
+              <InputField
                 id='name'
                 {...register("name")}
                 className='inputField'
@@ -90,8 +90,7 @@ const Invoice = () => {
               <label htmlFor='email' className='text-lg'>
                 Email
               </label>
-              <input
-                type='email'
+              <InputField
                 id='email'
                 {...register("email")}
                 className='inputField'
@@ -172,10 +171,10 @@ const Invoice = () => {
               <div className='grid grid-cols-2 gap-4'>
                 <div className='flex flex-col'>
                   <label>Product Name</label>
-                  <input
-                    type='text'
+                  <InputField
+                    id={""}
                     {...register(`products.${currentIndex}.name`)}
-                    placeholder='Name'
+                    placeHolder='Name'
                     className='inputField'
                   />
                   {errors.products?.[currentIndex]?.name && (
@@ -187,10 +186,10 @@ const Invoice = () => {
 
                 <div className='flex flex-col'>
                   <label>HSN</label>
-                  <input
-                    type='text'
+                  <InputField
+                    id={"hsn"}
                     {...register(`products.${currentIndex}.hsn`)}
-                    placeholder='HSN'
+                    placeHolder='HSN'
                     className='inputField'
                   />
                 </div>
@@ -199,20 +198,20 @@ const Invoice = () => {
               <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>Batch Number</label>
-                  <input
-                    type='text'
+                  <InputField
+                    id={"batchNumber"}
                     {...register(`products.${currentIndex}.batchNumber`)}
-                    placeholder='Batch Number'
+                    placeHolder='Batch Number'
                     className='inputField'
                   />
                 </div>
 
                 <div className='flex flex-col'>
                   <label>Expiry Date</label>
-                  <input
-                    type='text'
+                  <InputField
+                    id={"expiry"}
                     {...register(`products.${currentIndex}.expiry`)}
-                    placeholder='Expiry'
+                    placeHolder='Expiry'
                     className='inputField'
                   />
                 </div>
@@ -221,20 +220,20 @@ const Invoice = () => {
               <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>MRP</label>
-                  <input
-                    type='number'
+                  <InputField
+                    id='mrp'
                     {...register(`products.${currentIndex}.mrp`)}
-                    placeholder='MRP'
+                    placeHolder='MRP'
                     className='inputField'
                   />
                 </div>
 
                 <div className='flex flex-col'>
                   <label>Quantity</label>
-                  <input
-                    type='text'
+                  <InputField
+                    id='quantity'
                     {...register(`products.${currentIndex}.quantity`)}
-                    placeholder='Quantity'
+                    placeHolder='Quantity'
                     className='inputField'
                   />
                 </div>
@@ -243,19 +242,20 @@ const Invoice = () => {
               <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>Free Quantity</label>
-                  <input
+                  <InputField
+                    id='freeQuantity'
                     {...register(`products.${currentIndex}.freeQuantity`)}
-                    placeholder='Free Quantity'
+                    placeHolder='Free Quantity'
                     className='inputField'
                   />
                 </div>
 
                 <div className='flex flex-col'>
                   <label>Discount</label>
-                  <input
-                    type='number'
+                  <InputField
+                    id='discount'
                     {...register(`products.${currentIndex}.discount`)}
-                    placeholder='Discount'
+                    placeHolder='Discount'
                     className='inputField'
                   />
                 </div>
@@ -264,18 +264,19 @@ const Invoice = () => {
               <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div className='flex flex-col'>
                   <label>CGST</label>
-                  <input
+                  <InputField
+                    id='cgst'
                     {...register(`products.${currentIndex}.cgst`)}
-                    placeholder='CGST'
+                    placeHolder='CGST'
                     className='inputField'
                   />
                 </div>
                 <div className='flex flex-col'>
                   <label>SGST</label>
-                  <input
-                    type='number'
+                  <InputField
+                    id='sgst'
                     {...register(`products.${currentIndex}.sgst`)}
-                    placeholder='SGST'
+                    placeHolder='SGST'
                     className='inputField'
                   />
                 </div>
