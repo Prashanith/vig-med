@@ -30,8 +30,18 @@ function Authenticate() {
         className='flex flex-col justify-start items-start gap-y-7 w-96 p-7 rounded-lg shadow-sm shadow-secondary'
       >
         <img src='/logo.svg' className='h-12' />
-        <InputField id={""} {...register("email")} placeHolder='Email' />
-        <InputField id={""} {...register("password")} placeHolder='Password' />
+        <InputField
+          id={""}
+          {...register("email")}
+          placeHolder='Email'
+          error={errors.email?.message}
+        />
+        <InputField
+          id={""}
+          {...register("password")}
+          placeHolder='Password'
+          error={errors.password?.message}
+        />
         {isLoading && <p>Loading</p>}
         <Button type='submit' isBlock={true}>
           Submit
