@@ -17,17 +17,23 @@ function Authenticate() {
     },
   });
 
-  const onSubmit = async (data: Authentication) => {};
+  const onSubmit = async (data: Authentication) => {
+    console.log(data);
+  };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-start items-start gap-y-6 w-72">
-        <InputField id={""} {...register("email")} placeHolder="Email" />
-        <InputField id={""} {...register("password")} placeHolder="Password" />
-        {
-          isLoading && <p>Loading</p>
-        }
-        <Button type='submit' >Submit</Button>
+    <div className='w-full h-screen flex justify-center items-center'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='flex flex-col justify-start items-start gap-y-6 w-72'
+      >
+        <img src='/logo.svg' className='h-12' />
+        <InputField id={""} {...register("email")} placeHolder='Email' />
+        <InputField id={""} {...register("password")} placeHolder='Password' />
+        {isLoading && <p>Loading</p>}
+        <Button type='submit' isBlock={true}>
+          Submit
+        </Button>
       </form>
     </div>
   );

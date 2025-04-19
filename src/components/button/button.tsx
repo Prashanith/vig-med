@@ -13,6 +13,7 @@ type Ref = HTMLButtonElement;
 export interface IButtonProps extends BaseBtnAttributes {
   variant?: "contained" | "outlined" | "text" | "fab";
   size?: "small" | "medium" | "large" | "x-large";
+  isBlock?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
@@ -22,6 +23,7 @@ const Button = forwardRef<Ref, IButtonProps>(
     {
       variant = "contained",
       size = "medium",
+      isBlock = false,
       startIcon,
       endIcon,
       className = "",
@@ -44,6 +46,7 @@ const Button = forwardRef<Ref, IButtonProps>(
           `btn flex flex-row justify-center items-center gap-2`,
           `btn-${size}`,
           `btn-${variant}`,
+          `${isBlock && "w-full"}`,
           className
         )}
         ref={ref}
