@@ -9,7 +9,8 @@ function Authenticate() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isLoading, isSubmitting, isSubmitted },
+    
+    formState: { errors, isLoading, isSubmitSuccessful },
   } = useForm({
     resolver: zodResolver(AuthenticationSchema),
     defaultValues: {
@@ -21,6 +22,8 @@ function Authenticate() {
   const onSubmit = async (data: Authentication) => {
     await loginWithEmailAndPassword(data.email, data.password);
     console.log(data);
+    console.log(isSubmitSuccessful);
+    
   };
 
   return (
