@@ -19,24 +19,24 @@ const InputField = forwardRef<
 >(
   (
     { id, label, className, error, disabled, required, placeHolder, ...rest },
-    ref,
+    ref
   ) => {
     return (
       <div
         className={twMerge(
           "flex flex-col w-full px-0 gap-y-2 text-sm",
-          className,
+          className
         )}
       >
         {label && (
           <label
             htmlFor={id}
-            className="pl-2 text-primary-text font-medium text-sm"
+            className='pl-2 text-primary-text font-medium text-sm'
           >
             {label}
           </label>
         )}
-        <div className="relative w-full">
+        <div className='relative w-full'>
           <input
             id={id}
             className={`w-full border border-slate-200 bg-[#f9f9f9f3] shadow-sm 
@@ -49,14 +49,14 @@ const InputField = forwardRef<
             {...rest}
           />
           {error && (
-            <p className="text-red-600 text-xxs pl-2 top-full left-0 mt-1">
+            <p className='text-red-600 text-xxs pl-2 top-full left-0 mt-1'>
               {error}
             </p>
           )}
         </div>
       </div>
     );
-  },
+  }
 );
 
 InputField.displayName = "InputField";

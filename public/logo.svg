@@ -1,14 +1,21 @@
-<svg width="100%" height="auto" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Brand Name ("VIGNESHWARA") with Gradient and Poppins Font -->
-  <text x="50%" y="50%" font-family="'Poppins', Arial, Helvetica, sans-serif" font-size="48" fill="url(#grad1)" font-weight="700" letter-spacing="2" alignment-baseline="middle" text-anchor="middle">
-    VIGNESHWARA
+<svg width="100%" height="auto" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stylish Plus Logo with Shadow (Adjusted Size) -->
+  <text x="20" y="60%" font-family="'Poppins', Arial, Helvetica, sans-serif" font-size="100" fill="#a9b5df" font-weight="700" text-anchor="start" dominant-baseline="middle" filter="url(#shadow)">
+    +
   </text>
 
-  <!-- Gradient for Text Effect -->
+  <!-- Left-Aligned Brand Name in Two Lines with Reduced Gap -->
+  <text x="90" y="45%" font-family="'Poppins', Arial, Helvetica, sans-serif" font-size="36" fill="#a9b5df" font-weight="700" letter-spacing="2" dominant-baseline="middle" text-anchor="start">
+    VIGNESHWARA
+  </text>
+  <text x="90" y="75%" font-family="'Poppins', Arial, Helvetica, sans-serif" font-size="28" fill="#a9b5df" font-weight="600" letter-spacing="1.5" dominant-baseline="middle" text-anchor="start">
+    MEDICALS
+  </text>
+
+  <!-- Shadow Effect for Plus Logo -->
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2d336b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#a9b5df;stop-opacity:1" />
-    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="5" dy="5" stdDeviation="5" flood-color="#555" />
+    </filter>
   </defs>
 </svg>

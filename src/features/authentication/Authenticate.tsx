@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import InputField from "../../components/inputField/InputField";
 import { Authentication, AuthenticationSchema } from "./types/authenticate";
 import Button from "../../components/button/button";
+import { loginWithEmailAndPassword } from "./services/authService";
 
 function Authenticate() {
   const {
@@ -18,6 +19,7 @@ function Authenticate() {
   });
 
   const onSubmit = async (data: Authentication) => {
+    await loginWithEmailAndPassword(data.email, data.password);
     console.log(data);
   };
 
@@ -25,7 +27,7 @@ function Authenticate() {
     <div className='w-full h-screen flex justify-center items-center'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col justify-start items-start gap-y-6 w-72'
+        className='flex flex-col justify-start items-start gap-y-7 w-96 p-7 rounded-lg shadow-sm shadow-secondary'
       >
         <img src='/logo.svg' className='h-12' />
         <InputField id={""} {...register("email")} placeHolder='Email' />
