@@ -9,9 +9,9 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<SplashScreen />} />
+      <Route path='/login' element={<Authenticate />} />
       <Route element={<AppScaffold />}>
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/login' element={<Authenticate />} />
         <Route path='/generate-bill' element={<Invoice />} />
       </Route>
     </Routes>

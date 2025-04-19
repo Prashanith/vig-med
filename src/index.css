@@ -29,12 +29,8 @@ body {
   @apply px-1.5 sm:px-2 md:px-3 lg:px-5 xl:px-7 2xl:px-9;
 }
 
-label{
+label {
   @apply ml-1 text-sm font-bold mb-1;
-}
-
-.inputField {
-  @apply outline-0 border-none rounded-md focus:outline-none focus:ring-0 bg-[#e9e9e9] text-black px-3.5 py-2 mb-2;
 }
 
 .splashBg {
@@ -42,4 +38,40 @@ label{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.btn {
+  @apply outline-none border-0;
+}
+
+.btn-contained {
+  @apply bg-primary text-white hover:shadow-none;
+}
+
+.btn-outlined {
+  @apply text-primary-text bg-white border-secondary/20 border-[1pt];
+}
+
+.btn-text {
+  @apply bg-white text-primary-text;
+}
+
+.btn-fab {
+  @apply !rounded-full !text-primary-text bg-white size-8 p-2 flex justify-center items-center;
+}
+
+.btn-small {
+  @apply rounded-sm px-3 py-[5px] text-xs;
+}
+
+.btn-medium {
+  @apply rounded-md px-4 py-2 text-sm;
+}
+
+.btn-large {
+  @apply rounded-lg px-6 py-4 text-lg;
+}
+
+.btn-x-large {
+  @apply rounded-sm px-7 py-5 text-xl;
 }

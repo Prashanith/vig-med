@@ -61,7 +61,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
               {product.expiry}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.mrp.toFixed(2)}
+              {product.mrp}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
               {product.quantity}
@@ -70,19 +70,19 @@ const ProductTable: React.FC<ProductTableProps> = ({
               {product.freeQuantity}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.rate.toFixed(2)}
+              {product.rate}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.amount.toFixed(2)}
+              {product.amount}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.discount.toFixed(2)}
+              {product.discount}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.cgst.toFixed(2)}
+              {product.cgst}
             </td>
             <td className='border border-gray-300 px-4 py-3'>
-              {product.sgst.toFixed(2)}
+              {product.sgst}
             </td>
             <td className='border border-gray-300 px-4 py-3 flex justify-center items-center space-x-6'>
               <FaDeleteLeft
