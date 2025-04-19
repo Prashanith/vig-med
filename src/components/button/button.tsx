@@ -6,7 +6,6 @@ import {
   useMemo,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import "./button.css";
 
 type BaseBtnAttributes = ComponentPropsWithoutRef<"button">;
 type Ref = HTMLButtonElement;

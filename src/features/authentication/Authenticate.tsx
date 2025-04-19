@@ -20,14 +20,14 @@ function Authenticate() {
   const onSubmit = async (data: Authentication) => {};
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputField id={""} {...register("email")} />
-        <InputField id={""} {...register("password")} />
+    <div className="w-full h-screen flex justify-center items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-start items-start gap-y-6 w-72">
+        <InputField id={""} {...register("email")} placeHolder="Email" />
+        <InputField id={""} {...register("password")} placeHolder="Password" />
         {
           isLoading && <p>Loading</p>
         }
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' >Submit</Button>
       </form>
     </div>
   );
