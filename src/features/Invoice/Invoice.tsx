@@ -9,6 +9,7 @@ import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaFileInvoice, FaPlus } from "react-icons/fa6";
 import InputField from "../../components/inputField/InputField";
+import Button from "../../components/button/button";
 
 const Invoice = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -36,6 +37,8 @@ const Invoice = () => {
   });
 
   const onSubmit = (data: { products: Product[] }) => {
+    console.log("Submitting");
+
     const { products } = data;
     let totalBill = 0;
     products.forEach((product: Product) => {
@@ -64,7 +67,7 @@ const Invoice = () => {
         Invoice
       </h3>
       <div className='w-full border-b-teal-700 border-[1px]'></div>
-      <form onSubmit={handleSubmit(onSubmit)} className='w-full space-y-6'>
+      <form className='w-full space-y-6'>
         <div className='flex flex-row justify-start items-start space-x-6'>
           <div className='flex flex-col justify-start items-start space-y-6'>
             <div className='w-full flex justify-between items-center'>
@@ -109,6 +112,10 @@ const Invoice = () => {
                 {getValues() != null && getValues().products.length > 0 && (
                   <div className='flex justify-center'>
                     <button
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit(onSubmit);
+                      }}
                       type='submit'
                       className='bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
                     >
@@ -176,6 +183,11 @@ const Invoice = () => {
                     {...register(`products.${currentIndex}.name`)}
                     placeHolder='Name'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.name?.message
+                        : ""
+                    }
                   />
                   {errors.products?.[currentIndex]?.name && (
                     <span className='text-red-500 mt-2'>
@@ -191,6 +203,11 @@ const Invoice = () => {
                     {...register(`products.${currentIndex}.hsn`)}
                     placeHolder='HSN'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.hsn?.message
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -203,6 +220,11 @@ const Invoice = () => {
                     {...register(`products.${currentIndex}.batchNumber`)}
                     placeHolder='Batch Number'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.batchNumber?.message
+                        : ""
+                    }
                   />
                 </div>
 
@@ -213,6 +235,11 @@ const Invoice = () => {
                     {...register(`products.${currentIndex}.expiry`)}
                     placeHolder='Expiry'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.expiry?.message
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -222,9 +249,16 @@ const Invoice = () => {
                   <label>MRP</label>
                   <InputField
                     id='mrp'
-                    {...register(`products.${currentIndex}.mrp`)}
+                    {...register(`products.${currentIndex}.mrp`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='MRP'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.mrp?.message
+                        : ""
+                    }
                   />
                 </div>
 
@@ -232,9 +266,16 @@ const Invoice = () => {
                   <label>Quantity</label>
                   <InputField
                     id='quantity'
-                    {...register(`products.${currentIndex}.quantity`)}
+                    {...register(`products.${currentIndex}.quantity`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='Quantity'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.quantity?.message
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -244,9 +285,16 @@ const Invoice = () => {
                   <label>Free Quantity</label>
                   <InputField
                     id='freeQuantity'
-                    {...register(`products.${currentIndex}.freeQuantity`)}
+                    {...register(`products.${currentIndex}.freeQuantity`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='Free Quantity'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.freeQuantity?.message
+                        : ""
+                    }
                   />
                 </div>
 
@@ -254,9 +302,16 @@ const Invoice = () => {
                   <label>Discount</label>
                   <InputField
                     id='discount'
-                    {...register(`products.${currentIndex}.discount`)}
+                    {...register(`products.${currentIndex}.discount`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='Discount'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.discount?.message
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -266,18 +321,32 @@ const Invoice = () => {
                   <label>CGST</label>
                   <InputField
                     id='cgst'
-                    {...register(`products.${currentIndex}.cgst`)}
+                    {...register(`products.${currentIndex}.cgst`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='CGST'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.cgst?.message
+                        : ""
+                    }
                   />
                 </div>
                 <div className='flex flex-col'>
                   <label>SGST</label>
                   <InputField
                     id='sgst'
-                    {...register(`products.${currentIndex}.sgst`)}
+                    {...register(`products.${currentIndex}.sgst`, {
+                      valueAsNumber: true,
+                    })}
                     placeHolder='SGST'
                     className='inputField'
+                    error={
+                      errors.products
+                        ? errors.products[currentIndex]?.sgst?.message
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -285,6 +354,7 @@ const Invoice = () => {
           </div>
         )}
       </form>
+      {JSON.stringify(previewInvoice)}
       {getValues() != null &&
         getValues().products.length > 0 &&
         previewInvoice && (
