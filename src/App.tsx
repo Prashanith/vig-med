@@ -5,6 +5,7 @@ import SplashScreen from "./features/SplashScreen/SplashScreen";
 import AppScaffold from "./components/scaffold/AppScaffold";
 import Authenticate from "./features/authentication/Authenticate";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
+import SaleForm from "./features/dashboard/features/addSale/AddSale";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Invoice />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/add-sale'
+          element={
+            <ProtectedRoute>
+              <SaleForm />
             </ProtectedRoute>
           }
         />
