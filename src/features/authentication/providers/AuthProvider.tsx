@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import { ReactNode, useState, useEffect } from "react";
 import { auth } from "../../../services/firebase";
 import { AuthContext } from "../context/useAuth";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 interface IAuthProvider {
   children: ReactNode;
@@ -11,12 +11,18 @@ interface IAuthProvider {
 export function AuthProvider({ children }: IAuthProvider) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setTimeout(() => {
-        navigate(user ? "/dashboard" : "/login");
+        navigate(
+          user && location.pathname.includes("/login")
+            ? "/dashboard"
+            : "/login",
+          { replace: true }
+        );
       }, 1000);
     });
     return unsubscribe;
