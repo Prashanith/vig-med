@@ -4,12 +4,17 @@ import InputField from "../../components/inputField/InputField";
 import { Authentication, AuthenticationSchema } from "./types/authenticate";
 import Button from "../../components/button/button";
 import { loginWithEmailAndPassword } from "./services/authService";
+import { FaPlus } from "react-icons/fa";
+import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
+import { BsFileEarmarkMedical, BsPlusCircle } from "react-icons/bs";
+import { FcPlus } from "react-icons/fc";
+import Logo from "../../components/logo/Logo";
 
 function Authenticate() {
   const {
     register,
     handleSubmit,
-    
+
     formState: { errors, isLoading, isSubmitSuccessful },
   } = useForm({
     resolver: zodResolver(AuthenticationSchema),
@@ -21,9 +26,6 @@ function Authenticate() {
 
   const onSubmit = async (data: Authentication) => {
     await loginWithEmailAndPassword(data.email, data.password);
-    console.log(data);
-    console.log(isSubmitSuccessful);
-    
   };
 
   return (
@@ -32,7 +34,7 @@ function Authenticate() {
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col justify-start items-start gap-y-7 w-96 p-7 rounded-lg shadow-sm shadow-secondary'
       >
-        <img src='/logo.svg' className='h-12' />
+        <Logo />
         <InputField
           id={""}
           {...register("email")}

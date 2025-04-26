@@ -10,7 +10,7 @@ function AppScaffold() {
         <h2 className='text-lg font-medium'>
           <img src='/logo.svg' className='h-12' />
         </h2>
-        <Button onClick={() => logOut()} endIcon={<FaSignOutAlt />}>
+        <Button className="cursor-pointer" onClick={() => logOut()} endIcon={<FaSignOutAlt />}>
           SIGN OUT
         </Button>
       </nav>
