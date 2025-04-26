@@ -66,7 +66,10 @@ const Invoice = () => {
         Invoice
       </h3>
       <div className='w-full border-b-teal-700 border-[1px]'></div>
-      <form className='w-full space-y-6 flex flex-row justify-start items-start space-x-6'>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='w-full space-y-6 flex flex-row justify-start items-start space-x-6'
+      >
         <div className='flex flex-col justify-start items-start space-y-6'>
           <h3 className='font-bold text-xl'>Invoice Information</h3>
           <InputField
@@ -96,11 +99,6 @@ const Invoice = () => {
             <div className='flex-auto'></div>
             {getValues() != null && getValues().products.length > 0 && (
               <button
-                onSubmit={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  handleSubmit(onSubmit);
-                }}
                 type='submit'
                 className='bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
               >
