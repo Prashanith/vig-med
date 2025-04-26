@@ -17,12 +17,13 @@ export function AuthProvider({ children }: IAuthProvider) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setTimeout(() => {
-        navigate(
-          user && location.pathname.includes("/login")
-            ? "/dashboard"
-            : "/login",
-          { replace: true }
-        );
+        console.log(location.pathname, user);
+
+        if (user && location.pathname.includes("login")) {
+          navigate("/dashboard", { replace: true });
+        } else {
+          navigate("/login", { replace: true });
+        }
       }, 1000);
     });
     return unsubscribe;

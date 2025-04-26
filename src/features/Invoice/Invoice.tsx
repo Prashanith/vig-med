@@ -66,95 +66,78 @@ const Invoice = () => {
         Invoice
       </h3>
       <div className='w-full border-b-teal-700 border-[1px]'></div>
-      <form className='w-full space-y-6'>
-        <div className='flex flex-row justify-start items-start space-x-6'>
-          <div className='flex flex-col justify-start items-start space-y-6'>
-            <div className='w-full flex justify-between items-center'>
-              <h3 className='font-bold text-xl'>Invoice Information</h3>
-            </div>
-            {/* Name Field */}
-            <div className='flex flex-col'>
-              <label htmlFor='name' className='text-lg'>
-                Name
-              </label>
-              <InputField
-                id='name'
-                {...register("name")}
-                className='inputField'
-              />
-              {errors.name && (
-                <span className='text-red-500 mt-2'>{errors.name.message}</span>
-              )}
-            </div>
+      <form className='w-full space-y-6 flex flex-row justify-start items-start space-x-6'>
+        <div className='flex flex-col justify-start items-start space-y-6'>
+          <h3 className='font-bold text-xl'>Invoice Information</h3>
+          <InputField
+            id='name'
+            label='Name'
+            {...register("name")}
+            className='inputField'
+          />
+          {errors.name && (
+            <span className='text-red-500 mt-2'>{errors.name.message}</span>
+          )}
 
-            {/* Email Field */}
-            <div className='flex flex-col'>
-              <label htmlFor='email' className='text-lg'>
-                Email
-              </label>
-              <InputField
-                id='email'
-                {...register("email")}
-                className='inputField'
-              />
-              {errors.email && (
-                <span className='text-red-500 mt-2'>
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
+          <InputField
+            id='email'
+            label='Email'
+            {...register("email")}
+            className='inputField'
+          />
+          {errors.email && (
+            <span className='text-red-500 mt-2'>{errors.email.message}</span>
+          )}
+        </div>
+
+        <div className='flex flex-col justify-start items-start space-y-4'>
+          <div className='w-full flex justify-start items-center'>
+            <h3 className='font-bold text-xl'>Product List</h3>
+            <div className='flex-auto'></div>
+            {getValues() != null && getValues().products.length > 0 && (
+              <button
+                onSubmit={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  handleSubmit(onSubmit);
+                }}
+                type='submit'
+                className='bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
+              >
+                <FaFileInvoice />
+                <span>Generate Invoice</span>
+              </button>
+            )}
+            <button
+              type='button'
+              onClick={() => {
+                append({
+                  id: fields.length + 1,
+                  name: "",
+                  hsn: "",
+                  batchNumber: "",
+                  expiry: "",
+                  mrp: 0,
+                  quantity: 0,
+                  freeQuantity: 0,
+                  rate: 0,
+                  amount: 0,
+                  discount: 0,
+                  cgst: 0,
+                  sgst: 0,
+                });
+                setCurrentIndex(fields.length);
+              }}
+              className='bg-primary text-white py-2 px-4 rounded-md flex justify-center items-center space-x-2'
+            >
+              <FaPlus /> <span>Add Product</span>
+            </button>
           </div>
-          <div className='flex flex-col justify-start items-start space-y-4'>
-            <div className='w-full flex justify-between items-center'>
-              <h3 className='font-bold text-xl'>Product List</h3>
-              <div className='flex flex-row justify-center items-center space-x-3'>
-                {getValues() != null && getValues().products.length > 0 && (
-                  <div className='flex justify-center'>
-                    <button
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSubmit(onSubmit);
-                      }}
-                      type='submit'
-                      className='bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
-                    >
-                      <FaFileInvoice />
-                      <span>Generate Invoice</span>
-                    </button>
-                  </div>
-                )}
-                <button
-                  type='button'
-                  onClick={() => {
-                    append({
-                      id: fields.length + 1,
-                      name: "",
-                      hsn: "",
-                      batchNumber: "",
-                      expiry: "",
-                      mrp: 0,
-                      quantity: 0,
-                      freeQuantity: 0,
-                      rate: 0,
-                      amount: 0,
-                      discount: 0,
-                      cgst: 0,
-                      sgst: 0,
-                    });
-                    setCurrentIndex(fields.length);
-                  }}
-                  className='bg-primary text-white py-2 px-4 rounded-md flex justify-center items-center space-x-2'
-                >
-                  <FaPlus /> <span>Add Product</span>
-                </button>
-              </div>
-            </div>
-            <ProductTable
-              products={getValues().products}
-              onDelete={(idx) => remove(idx)}
-              onEdit={(idx) => setCurrentIndex(idx)}
-            />
-          </div>
+          <ProductTable
+            products={getValues().products}
+            onDelete={(idx) => remove(idx)}
+            onEdit={(idx) => setCurrentIndex(idx)}
+          />
         </div>
 
         {currentIndex != -1 && (
@@ -353,7 +336,6 @@ const Invoice = () => {
           </div>
         )}
       </form>
-      {JSON.stringify(previewInvoice)}
       {getValues() != null &&
         getValues().products.length > 0 &&
         previewInvoice && (
