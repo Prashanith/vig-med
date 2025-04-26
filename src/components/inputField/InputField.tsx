@@ -11,6 +11,7 @@ interface InputFieldProps<T extends string | number> {
   required?: boolean;
   value?: string;
   defaultValue?: string;
+  type?: React.HTMLInputTypeAttribute;
 }
 
 const InputField = forwardRef<
@@ -18,7 +19,17 @@ const InputField = forwardRef<
   InputFieldProps<string | number>
 >(
   (
-    { id, label, className, error, disabled, required, placeHolder, ...rest },
+    {
+      id,
+      label,
+      className,
+      error,
+      disabled,
+      required,
+      placeHolder,
+      type = "text",
+      ...rest
+    },
     ref
   ) => {
     return (
@@ -43,6 +54,7 @@ const InputField = forwardRef<
               placeholder:text-slate-400 px-4 text-xs py-2 rounded-md focus:outline-gray-300
               ${error && "outline-red-600"}`}
             ref={ref}
+            type={type}
             disabled={disabled}
             required={required}
             placeholder={placeHolder}

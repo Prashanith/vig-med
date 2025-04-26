@@ -46,6 +46,7 @@ function Authenticate() {
           {...register("password")}
           placeHolder='Password'
           error={errors.password?.message}
+          type='password'
         />
         {isLoading && <p>Loading</p>}
         <Button type='submit' isBlock={true}>
