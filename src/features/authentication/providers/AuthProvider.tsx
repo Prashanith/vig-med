@@ -15,7 +15,9 @@ export function AuthProvider({ children }: IAuthProvider) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      navigate(user ? "/dashboard" : "/login");
+      setTimeout(() => {
+        navigate(user ? "/dashboard" : "/login");
+      }, 1000);
     });
     return unsubscribe;
   }, []);
