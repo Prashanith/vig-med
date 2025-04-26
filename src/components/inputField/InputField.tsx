@@ -9,8 +9,8 @@ interface InputFieldProps<T extends string | number> {
   placeHolder?: string;
   disabled?: boolean;
   required?: boolean;
-  value?: string;
-  defaultValue?: string;
+  value?: T;
+  defaultValue?: T;
   type?: React.HTMLInputTypeAttribute;
 }
 

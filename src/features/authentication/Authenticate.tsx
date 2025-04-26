@@ -4,10 +4,6 @@ import InputField from "../../components/inputField/InputField";
 import { Authentication, AuthenticationSchema } from "./types/authenticate";
 import Button from "../../components/button/button";
 import { loginWithEmailAndPassword } from "./services/authService";
-import { FaPlus } from "react-icons/fa";
-import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
-import { BsFileEarmarkMedical, BsPlusCircle } from "react-icons/bs";
-import { FcPlus } from "react-icons/fc";
 import Logo from "../../components/logo/Logo";
 
 function Authenticate() {
@@ -15,7 +11,7 @@ function Authenticate() {
     register,
     handleSubmit,
 
-    formState: { errors, isLoading, isSubmitSuccessful },
+    formState: { errors, isLoading },
   } = useForm({
     resolver: zodResolver(AuthenticationSchema),
     defaultValues: {

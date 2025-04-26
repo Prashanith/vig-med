@@ -9,7 +9,6 @@ import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaFileInvoice, FaPlus } from "react-icons/fa6";
 import InputField from "../../components/inputField/InputField";
-import Button from "../../components/button/button";
 
 const Invoice = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
