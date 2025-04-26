@@ -7,10 +7,14 @@ function AppScaffold() {
   return (
     <div className='w-full h-screen flex flex-col justify-start items-start'>
       <nav className='pagePadding h-[70px] w-full flex justify-between items-center bg-primary text-secondary-text'>
-        <h2 className='text-lg font-medium'>
-          <img src='/logo.svg' className='h-12' />
-        </h2>
-        <Button className="cursor-pointer" onClick={() => logOut()} endIcon={<FaSignOutAlt />}>
+        <h1 className='text-xl font-bold font-stretch-100% text-secondary'>
+          Vigneshwara Medicals
+        </h1>
+        <Button
+          className='cursor-pointer'
+          onClick={() => logOut()}
+          endIcon={<FaSignOutAlt />}
+        >
           SIGN OUT
         </Button>
       </nav>
