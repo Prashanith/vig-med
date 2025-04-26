@@ -17,8 +17,6 @@ export function AuthProvider({ children }: IAuthProvider) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setTimeout(() => {
-        console.log(location.pathname, user);
-
         if (user && location.pathname.includes("login")) {
           navigate("/dashboard", { replace: true });
         } else {
