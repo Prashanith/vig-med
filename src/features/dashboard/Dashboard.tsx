@@ -7,7 +7,7 @@ function Dashboard() {
   const nav = useNavigate();
 
   function navigateToBillGeneration(route: string) {
-    nav(route, { replace: true });
+    nav(route);
   }
 
   return (
@@ -23,7 +23,7 @@ function Dashboard() {
         id='sales'
         title='View Sales'
         desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
-        onClick={() => navigateToBillGeneration("/generate-bill")}
+        onClick={() => navigateToBillGeneration("/sales")}
         icon={<FaMoneyBillTrendUp />}
       />
       <ActionCard

@@ -6,6 +6,7 @@ import AppScaffold from "./components/scaffold/AppScaffold";
 import Authenticate from "./features/authentication/Authenticate";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
 import SaleForm from "./features/dashboard/features/addSale/AddSale";
+import ViewSales from "./features/dashboard/features/viewSales/ViewSales";
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
           element={
             <ProtectedRoute>
               <SaleForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/sales'
+          element={
+            <ProtectedRoute>
+              <ViewSales />
             </ProtectedRoute>
           }
         />
