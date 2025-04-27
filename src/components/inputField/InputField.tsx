@@ -11,6 +11,7 @@ interface InputFieldProps<T extends string | number> {
   required?: boolean;
   value?: T;
   defaultValue?: T;
+  readOnly?: boolean;
   type?: React.HTMLInputTypeAttribute;
 }
 
@@ -27,6 +28,7 @@ const InputField = forwardRef<
       disabled,
       required,
       placeHolder,
+      readOnly = false,
       type = "text",
       ...rest
     },
@@ -57,6 +59,7 @@ const InputField = forwardRef<
             type={type}
             disabled={disabled}
             required={required}
+            readOnly={readOnly}
             placeholder={placeHolder}
             {...rest}
           />

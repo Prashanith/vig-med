@@ -62,7 +62,7 @@ const SaleForm = () => {
           id='netAmount'
           label='Net Amount'
           type='number'
-          readOnly // 🔒 Make it non-editable
+          readOnly={true}
           {...register("netAmount")}
           error={errors.netAmount?.message}
         />
