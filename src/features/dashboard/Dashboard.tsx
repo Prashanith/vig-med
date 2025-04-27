@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import ActionCard from "./components/ActionCard";
-import { FaHistory } from "react-icons/fa";
+import { FaHistory, FaRupeeSign } from "react-icons/fa";
 import { FaMoneyBillTrendUp, FaNoteSticky } from "react-icons/fa6";
 
 function Dashboard() {
@@ -38,7 +38,7 @@ function Dashboard() {
         title='Add Sale'
         desc='Add Sales Date For Tracking and Insights'
         onClick={() => navigateToBillGeneration("/add-sale")}
-        icon={<FaHistory />}
+        icon={<FaRupeeSign />}
       />
     </div>
   );
