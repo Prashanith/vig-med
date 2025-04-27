@@ -98,9 +98,8 @@ const Invoice = () => {
             <h3 className='font-bold text-xl'>Product List</h3>
             <div className='flex-auto'></div>
             <button
-              disabled={getValues() == null || getValues().products.length == 0}
               type='submit'
-              className='bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
+              className='mr-3 bg-secondary text-primary-text py-2 px-4 rounded-md  flex justify-center items-center space-x-2'
             >
               <FaFileInvoice />
               <span>Generate Invoice</span>
@@ -333,13 +332,9 @@ const Invoice = () => {
           </div>
         )}
       </form>
-      {getValues() != null &&
-        getValues().products.length > 0 &&
-        previewInvoice && (
-          <PDFViewer className='w-full h-screen'>
-            <InvoiceViewer invoice={getValues()} />
-          </PDFViewer>
-        )}
+      <PDFViewer className='w-full h-screen'>
+        <InvoiceViewer invoice={getValues()} />
+      </PDFViewer>
     </div>
   );
 };
