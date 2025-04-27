@@ -15,28 +15,28 @@ function Dashboard() {
       <ActionCard
         id='billGeneration'
         title='Create Bill'
-        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
+        desc='Generate Bills For the Customers and Download'
         onClick={() => navigateToBillGeneration("/generate-bill")}
         icon={<FaNoteSticky />}
       />
       <ActionCard
         id='sales'
         title='View Sales'
-        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
+        desc='View Sales Data to Get Insights'
         onClick={() => navigateToBillGeneration("/sales")}
         icon={<FaMoneyBillTrendUp />}
       />
       <ActionCard
         id='billGeneration'
         title='View Past Bills'
-        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
+        desc='Track Saved Bills'
         onClick={() => navigateToBillGeneration("/generate-bill")}
         icon={<FaHistory />}
       />
       <ActionCard
         id='addSale'
         title='Add Sale'
-        desc='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam dolorum impedit obcaecati recusandae'
+        desc='Add Sales Date For Tracking and Insights'
         onClick={() => navigateToBillGeneration("/add-sale")}
         icon={<FaHistory />}
       />
