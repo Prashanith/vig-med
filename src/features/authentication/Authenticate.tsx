@@ -25,7 +25,7 @@ function Authenticate() {
   };
 
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
+    <div className='w-full h-screen flex justify-center items-center splashBg'>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col justify-start items-start gap-y-7 w-96 p-7 rounded-lg shadow-sm shadow-secondary'
