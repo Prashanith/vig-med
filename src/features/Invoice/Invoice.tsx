@@ -12,7 +12,7 @@ import InputField from "../../components/inputField/InputField";
 
 const Invoice = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [previewInvoice, setPreviewInvoice] = useState(false);
+  // const [previewInvoice, setPreviewInvoice] = useState(false);
   const {
     register,
     handleSubmit,
@@ -57,7 +57,7 @@ const Invoice = () => {
     });
     setValue("products", products);
     setValue("totalAmount", totalBill);
-    setPreviewInvoice(true);
+    // setPreviewInvoice(true);
   };
 
   return (
