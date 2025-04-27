@@ -1,9 +1,20 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 import { Sale, SaleSchema } from "../types/sale";
 import InputField from "../../../../components/inputField/InputField";
 import Button from "../../../../components/button/button";
+
+const generateDefaultValues = (): Sale => ({
+  id: uuidv4(),
+  date: new Date().toISOString().split("T")[0],
+  netAmount: 0,
+  categoryBreakdown: {
+    medicine: 0,
+    general: 0,
+  },
+});
 
 const SaleForm = () => {
   const {
@@ -11,22 +22,26 @@ const SaleForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    setValue,
   } = useForm<Sale>({
     resolver: zodResolver(SaleSchema),
-    defaultValues: {
-      id: uuidv4(),
-      date: new Date().toISOString().split("T")[0],
-      netAmount: 0,
-      categoryBreakdown: {
-        medicine: 0,
-        general: 0,
-      },
-    },
+    defaultValues: generateDefaultValues(),
   });
+
+  // 👀 Watch category values
+  const medicine = watch("categoryBreakdown.medicine");
+  const general = watch("categoryBreakdown.general");
+
+  // 🔁 Update netAmount whenever categories change
+  useEffect(() => {
+    const total = (medicine || 0) + (general || 0);
+    setValue("netAmount", total, { shouldValidate: true });
+  }, [medicine, general, setValue]);
 
   const onSubmit = (data: Sale) => {
     console.log("Sale submitted:", data);
-    reset();
+    reset(generateDefaultValues()); // Re-generate UUID + reset form
   };
 
   return (
@@ -37,7 +52,7 @@ const SaleForm = () => {
       <div className='w-full border-b-teal-700 border-[1px]'></div>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-4 max-w-md'>
         <InputField
-          id={"date"}
+          id='date'
           label='Date'
           type='date'
           {...register("date")}
@@ -47,7 +62,8 @@ const SaleForm = () => {
           id='netAmount'
           label='Net Amount'
           type='number'
-          {...register("netAmount", { valueAsNumber: true })}
+          readOnly // 🔒 Make it non-editable
+          {...register("netAmount")}
           error={errors.netAmount?.message}
         />
         <InputField
